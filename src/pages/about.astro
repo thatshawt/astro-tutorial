@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "About Me";
+
+const identity = {
+  firstName: "david",
+  country: "america",
+  occupation: "computer gangster",
+  hobbies: ["programming", "mathmatics", "watching anime while eating"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = true;
+const finished = true;
+const goal = 3;
+
+const skillColor = "navy";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+
+    <style define:vars={{skillColor}}>
+      h1 {
+        color: purple;
+        font-size: 4rem;
+      }
+      .skill{
+        color: var(--skillColor);
+        font-weight: bold;
+      }
+    </style>
+
+      <h1>my name is {identity.firstName}</h1>
+      <h2>my hobbies are</h2>
+      <ul>
+        <li>{identity.hobbies[0]}</li>
+        <li>{identity.hobbies[1]}</li>
+        <li>{identity.hobbies[2]}</li>
+      </ul>
+    <h1>my skills are</h1>
+    <ul>
+      {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
+
+    {happy && <h1>happy rn wassup gang</h1>}
+    {finished ? <h1>i finished...</h1> : <h1>grind dontr stop</h1>}
+
+</BaseLayout>
